@@ -3,7 +3,17 @@ import { Command, Option } from 'commander';
 import { addExportJsonCommand } from './commands/export-json.js';
 import consola from 'consola';
 import chalk from 'chalk';
-const version = '0.0.1';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+//read the version from the package file
+const packageContents = readFileSync(__dirname + '/../package.json').toString();
+
+const version = JSON.parse(packageContents).version;
 
 class DynamoManRootCommand extends Command {
   createCommand(name: string) {
