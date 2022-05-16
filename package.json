@@ -7,8 +7,12 @@
   "type": "module",
   "exports": "./index.js",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "bin/**/*"
   ],
+  "bin": {
+    "dynamoman": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
