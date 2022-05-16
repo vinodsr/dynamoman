@@ -8,13 +8,14 @@ import ora from 'ora';
 import { writeFile, access } from 'fs/promises';
 import consola from 'consola';
 import inquirer from 'inquirer';
+import chalk from 'chalk';
 
 const delay = (time: number) => new Promise((res) => setTimeout(res, time));
 export const addExportJsonCommand = (program: Command) => {
   program
     .command('export')
     .description('Export as JSON file')
-    .requiredOption('--out <file>', 'target json file')
+    .requiredOption('--file <target_file>', 'target json file')
     .option('--table <table>', 'Table to export')
     .option(
       '--comment <description>',
@@ -22,30 +23,44 @@ export const addExportJsonCommand = (program: Command) => {
       ''
     )
     .action(async (options) => {
-      const { table, out: outFile, comment } = options;
-      consola.info(`Starting export using ${JSON.stringify(options, null, 2)}`);
+      const {
+        table,
+        file: outFile,
+        comment,
+        region: regionArg,
+        force,
+      } = options;
+      const region = regionArg || null;
+      consola.debug(
+        `Starting export using ${JSON.stringify(options, null, 2)}`
+      );
       const spinner = ora({
         discardStdin: false,
         text: `Exporting table [${table}]`,
       });
 
+      spinner.info(`Exporting table [${table}]`);
+
       // Check if the file is existing ?
-      try {
-        await access(outFile);
-        // ask for overwrite
-        const result = await inquirer.prompt([
-          {
-            type: 'confirm',
-            message: 'File already exist ! Overwrite ?',
-            name: 'shouldContinue',
-          },
-        ]);
-        if (!result.shouldContinue) {
-          spinner.fail('file already exist!');
-          process.exit(0);
+      if (!force) {
+        try {
+          await access(outFile);
+          // ask for overwrite
+          const result = await inquirer.prompt([
+            {
+              type: 'confirm',
+              message: 'File already exist ! Overwrite ?',
+              name: 'shouldContinue',
+            },
+          ]);
+          if (!result.shouldContinue) {
+            spinner.fail('File already exist!');
+            spinner.fail('Exporting failed!');
+            process.exit(0);
+          }
+        } catch (error) {
+          // fINE ..file doesn't exists
         }
-      } catch (error) {
-        // fINE ..file doesn't exists
       }
 
       let count = 0;
@@ -56,7 +71,8 @@ export const addExportJsonCommand = (program: Command) => {
         table: table,
       };
       spinner.start();
-      const { documentClient } = createClient('us-west-2');
+      const startTime = new Date().getTime();
+      const { documentClient } = createClient(region);
       const params: ScanCommandInput = {
         TableName: table,
       };
@@ -80,17 +96,26 @@ export const addExportJsonCommand = (program: Command) => {
         }
 
         await writeFile(outFile, JSON.stringify(exportFormat));
-        spinner.succeed(`Created : ${outFile} | Total records : ${count}`);
+        const timeInSec =
+          Math.round(((new Date().getTime() - startTime) / 1000) * 100) / 100;
+
+        spinner.succeed(
+          `Created: ${chalk.whiteBright(
+            outFile
+          )} | Total record(s): ${chalk.green(
+            count
+          )} | Took: ${chalk.blueBright(timeInSec)} second(s)`
+        );
         spinner.stop();
-        consola.success('Export completed');
+        spinner.succeed('Export completed');
       } catch (e: unknown) {
         const error = e as Error;
-        spinner.fail('Exporting failed');
         if (error.name === 'ResourceNotFoundException') {
           spinner.fail('Table not found!');
         } else {
           spinner.fail(error.message);
         }
+        spinner.fail('Exporting failed!');
       }
     });
 };
