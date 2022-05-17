@@ -10,7 +10,10 @@ import consola from 'consola';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 
-const delay = (time: number) => new Promise((res) => setTimeout(res, time));
+/**
+ * Adds the export command action
+ * @param program Commander
+ */
 export const addExportJsonCommand = (program: Command) => {
   program
     .command('export')
@@ -84,7 +87,6 @@ export const addExportJsonCommand = (program: Command) => {
             exportFormat.records.push(...data.Items);
             count += data.Items.length;
           }
-          await delay(1000);
           if (typeof data.LastEvaluatedKey != 'undefined') {
             params.ExclusiveStartKey = data.LastEvaluatedKey;
             spinner.stop();

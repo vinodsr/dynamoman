@@ -4,21 +4,17 @@ import { Command } from 'commander';
 import {
   BatchWriteItemCommand,
   BatchWriteItemCommandInput,
-  ScanCommand,
 } from '@aws-sdk/client-dynamodb';
-import {
-  BatchWriteCommand,
-  BatchWriteCommandInput,
-  ScanCommandInput,
-} from '@aws-sdk/lib-dynamodb';
 import _ from 'lodash';
 import ora from 'ora';
-import { writeFile, readFile, access } from 'fs/promises';
+import { readFile, access } from 'fs/promises';
 import consola from 'consola';
-import { marshall } from '@aws-sdk/util-dynamodb';
 import chalk from 'chalk';
 
-const delay = (time: number) => new Promise((res) => setTimeout(res, time));
+/**
+ * Adds the import command action
+ * @param program Commander
+ */
 export const addImportJsonCommand = (program: Command) => {
   program
     .command('import')
@@ -78,7 +74,7 @@ export const addImportJsonCommand = (program: Command) => {
             RequestItems: {},
           };
           if (params.RequestItems) {
-            params.RequestItems[table] = putRequests;
+            params.RequestItems[table] = putRequests as never;
           }
           await documentClient.send(new BatchWriteItemCommand(params));
         }
