@@ -1,14 +1,24 @@
 {
   "name": "dynamoman",
   "author": "Vinod S R",
+  "version": "0.2.1",
+  "homepage": "https://github.com/vinodsr/dynamoman",
+  "description": "Utility to export and import AWS dynamoDB",
+  "keywords": [
+    "dynamodb",
+    "aws",
+    "import",
+    "export",
+    "cli",
+    "utility"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/vinodsr/dynamoman.git"
   },
-  "homepage": "https://github.com/vinodsr/dynamoman",
-  "version": "0.2.1",
-  "description": "Utility to export and import AWS dynamoDB",
-  "node": ">=14.16",
+  "engines": {
+    "node": ">=14"
+  },
   "type": "module",
   "exports": "./index.js",
   "files": [
