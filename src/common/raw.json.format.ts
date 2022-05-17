@@ -3,7 +3,8 @@
  */
 export interface RawJsonFormat {
   records: unknown[];
-  timestamp: string;
+  timestamp: number;
   description: string;
   table: string;
+  region?: string;
 }

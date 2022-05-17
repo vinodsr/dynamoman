@@ -69,13 +69,15 @@ export const addExportJsonCommand = (program: Command) => {
       let count = 0;
       const exportFormat: RawJsonFormat = {
         records: [],
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().getTime(),
         description: comment,
         table: table,
       };
       spinner.start();
       const startTime = new Date().getTime();
       const { documentClient } = createClient(region);
+      const docRegion = await documentClient.config.region();
+      exportFormat.region = docRegion;
       const params: ScanCommandInput = {
         TableName: table,
       };

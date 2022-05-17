@@ -1,11 +1,12 @@
-import { addImportJsonCommand } from './commands/import-json.js';
-import { Command, Option } from 'commander';
-import { addExportJsonCommand } from './commands/export-json.js';
-import consola from 'consola';
 import chalk from 'chalk';
+import { Command, Option } from 'commander';
+import consola from 'consola';
 import { readFileSync } from 'fs';
-import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { addExportJsonCommand } from './commands/export-json.js';
+import { addImportJsonCommand } from './commands/import-json.js';
+import { addVerifyJsonCommand } from './commands/verify-json.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -50,6 +51,8 @@ program
 
 addExportJsonCommand(program);
 addImportJsonCommand(program);
+addVerifyJsonCommand(program);
+
 program.hook('preAction', (thisCommand, actionCommand) => {
   console.log(`
 dynamoman - ${version}
