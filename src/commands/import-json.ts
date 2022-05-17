@@ -22,7 +22,7 @@ const delay = (time: number) => new Promise((res) => setTimeout(res, time));
 export const addImportJsonCommand = (program: Command) => {
   program
     .command('import')
-    .description('Import a JSON file')
+    .description('import data into an AWS DynamoDB table from a JSON file')
     .requiredOption('--file <file>', 'source json file')
     .option('--table <table>', 'Table to import')
     .action(async (options) => {

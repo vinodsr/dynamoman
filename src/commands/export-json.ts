@@ -14,7 +14,7 @@ const delay = (time: number) => new Promise((res) => setTimeout(res, time));
 export const addExportJsonCommand = (program: Command) => {
   program
     .command('export')
-    .description('Export as JSON file')
+    .description('export data from an AWS DynamoDB table as JSON file')
     .requiredOption('--file <target_file>', 'target json file')
     .option('--table <table>', 'Table to export')
     .option(

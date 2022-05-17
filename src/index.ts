@@ -35,7 +35,18 @@ const program = new DynamoManRootCommand();
 program
   .name('dynamoman')
   .description('CLI to manage AWS DynamoDB Import & Export')
-  .version(version);
+  .addHelpText(
+    'beforeAll',
+    chalk.green(`
+    ████████    █████    ██ █████ ███    ███ ██████ ███    ███ █████ ███    ██ 
+    ██   ████  ██ ████   ████   ██████  ██████    ██████  ██████   ██████   ██ 
+    ██   ██ ████  ██ ██  ███████████ ████ ████    ████ ████ ███████████ ██  ██ 
+    ██   ██  ██   ██  ██ ████   ████  ██  ████    ████  ██  ████   ████  ██ ██ 
+    ██████   ██   ██   ██████   ████      ██ ██████ ██      ████   ████   ████  
+    
+  `)
+  )
+  .version(version, undefined, 'display version');
 
 addExportJsonCommand(program);
 addImportJsonCommand(program);

@@ -1,7 +1,7 @@
 {
   "name": "dynamoman",
   "author": "Vinod S R",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "homepage": "https://github.com/vinodsr/dynamoman",
   "description": "Utility to export and import AWS dynamoDB",
   "keywords": [
@@ -31,7 +31,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "build": "tsc"
+    "prebuild": "rimraf dist",
+    "build": "tsc --build",
+    "prepare": "husky install"
   },
   "license": "MIT",
   "dependencies": {
@@ -53,7 +55,13 @@
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": "^8.15.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint"
   }
 }
