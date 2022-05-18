@@ -122,8 +122,8 @@ Export options are
 | --region <aws_region>   | Provide the AWS region if you want to overwrite the default one        |
 | --log <log_level>       | Log Level to user (choices: "Info", "Debug", "Trace", default: "Info") |
 | --force                 | Forces any confirmation to default yes and proceed                     |
-| --file <target_file>    | target json file                                                       |
-| --table <table>         | Table to export                                                        |
+| --file <target_file>    | Target json file                                                       |
+| --table <table_name>    | Table to export                                                        |
 | --comment <description> | Any comments to include in the export (default: "")                    |
 
 ### Import a table
@@ -140,8 +140,8 @@ Import options are
 | --------------------- | ---------------------------------------------------------------------- |
 | --region <aws_region> | Provide the AWS region if you want to overwrite the default one        |
 | --log <log_level>     | Log Level to user (choices: "Info", "Debug", "Trace", default: "Info") |
-| --file <target_file>  | source json file                                                       |
-| --table <table>       | Table to import                                                        |
+| --file <target_file>  | Source json file                                                       |
+| --table <table_name>  | Table to import                                                        |
 
 ### Verify the exported JSON file
 
