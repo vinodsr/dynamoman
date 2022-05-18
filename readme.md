@@ -1,11 +1,13 @@
-# dynamoman
+# dynamoman - The Perfect AWS DynamoDB Manager
 
-CLI to export and import data from AWS DynamoDB
-
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-![Node](https://img.shields.io/node/v/dynamoman)
 ![Version](https://img.shields.io/npm/v/dynamoman)
 ![Downloads](https://img.shields.io/npm/dw/dynamoman)
+![Node](https://img.shields.io/node/v/dynamoman)
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+
+Dynamoman is the perfect cli too to export and import data from AWS DynamoDB tables.
+
+> It stores the data in the native DynamoDB Json format, so nothing is lost while importing.
 
 ```
 
@@ -105,7 +107,7 @@ aws configure
 
 Using this command setup the `access key id` and `secret access key`.
 
-| You can also setup the default region during this step.
+> You can also setup the default region during this step.
 
 ### Export a table
 
@@ -165,6 +167,11 @@ Contributions are always welcome!
 See [contributing.md](contributing.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
+
+## Roadmap
+
+- Export all tables to a zip
+- Import all tables from a zip
 
 ## Feedback
 
