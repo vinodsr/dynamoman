@@ -4,6 +4,19 @@ CLI to export and import data from AWS DynamoDB
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 ![Node](https://img.shields.io/node/v/dynamoman)
+![Version](https://img.shields.io/npm/v/dynamoman)
+![Downloads](https://img.shields.io/npm/dw/dynamoman)
+
+```
+
+████████    █████    ██ █████ ███    ███ ██████ ███    ███ █████ ███    ██
+██   ████  ██ ████   ████   ██████  ██████    ██████  ██████   ██████   ██
+██   ██ ████  ██ ██  ███████████ ████ ████    ████ ████ ███████████ ██  ██
+██   ██  ██   ██  ██ ████   ████  ██  ████    ████  ██  ████   ████  ██ ██
+██████   ██   ██   ██████   ████      ██ ██████ ██      ████   ████   ████
+
+
+```
 
 ## Features
 
@@ -42,14 +55,6 @@ dynamoman --help
 This will show a help screen
 
 ```
-
-    ████████    █████    ██ █████ ███    ███ ██████ ███    ███ █████ ███    ██
-    ██   ████  ██ ████   ████   ██████  ██████    ██████  ██████   ██████   ██
-    ██   ██ ████  ██ ██  ███████████ ████ ████    ████ ████ ███████████ ██  ██
-    ██   ██  ██   ██  ██ ████   ████  ██  ████    ████  ██  ████   ████  ██ ██
-    ██████   ██   ██   ██████   ████      ██ ██████ ██      ████   ████   ████
-
-
 Usage: dynamoman [options] [command]
 
 CLI to manage AWS DynamoDB Import & Export
