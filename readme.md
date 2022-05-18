@@ -162,10 +162,10 @@ Verify options are
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
+See [contributing.md](contributing.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
 ## Feedback
 
-If you have any feedback, please reach out to us at fake@fake.com
+If you have any feedback, please reach out to us at contact@vinodsr.com
