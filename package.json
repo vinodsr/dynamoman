@@ -1,7 +1,7 @@
 {
   "name": "dynamoman",
   "author": "Vinod S R",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "homepage": "https://github.com/vinodsr/dynamoman",
   "description": "Utility to export and import AWS dynamoDB",
   "keywords": [
