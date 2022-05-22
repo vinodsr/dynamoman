@@ -25,7 +25,7 @@ Dynamoman is the perfect cli too to export and import data from AWS DynamoDB tab
 - Easily export the dynamoDB table as JSON
 - Imports the data into any dynamoDB table
 - Export from one region and import in to another
-- Suppors batch import (chunks of 25 records)
+- Supports batch import (chunks of 25 records)
 - Supports Windows / Linux / Mac
 
 ## Installation
@@ -41,8 +41,6 @@ To verify the Installation
 ```bash
   dynamoman --help
 ```
-
-## Documentation
 
 ## Documentation
 
